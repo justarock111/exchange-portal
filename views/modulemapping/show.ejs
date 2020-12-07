@@ -1,0 +1,181 @@
+<%- include("../partials/header") %>
+
+<!--Objects to pass in: current module mapping-->
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+        <div class="card text-white bg-primary mb-3 module-name-left-card" >
+            <div class="card-body">
+                <h2 class="card-title"><%= moduleMapping.localModuleCode %></h2>
+                <h4 class="card-text"><%= moduleMapping.localModuleName %></h4>
+            </div>
+        </div>
+
+          <span><i class="arrow right"></i> </span>
+
+        <div class="card text-white bg-info mb-3 module-name-right-card" >
+            <div class="card-body">
+                <h2 class="card-title"><%= moduleMapping.moduleCode %></h2>
+                <h4 class="card-text"><%= moduleMapping.moduleName %></h4>
+            </div>
+        </div>
+            </div>
+    </div>
+
+            <div class="row">
+            <div class="col-md-12">
+
+               <div class="card">
+                   <h4 class="card-header">Synopsis</h4>
+                   <div class="card-body">
+                       <p class="card-text"><%= moduleMapping.synopsis %></p>
+                   </div>
+               </div>
+
+                <div class="card">
+                    <h4 class="card-header">Module Components</h4>
+                    <div class="card-body">
+                    <table dir="ltr" cols="3" class="PSLEVEL3GRID" style="border-style:none" width="100%" cellspacing="0" cellpadding="2" border="1">
+                        <tbody>
+
+                        <tr>
+                            <th scope="col" abbr="Module Components" class="PSLEVEL3GRIDCOLUMNHDR" width="103" align="left"><a name="N_EXSP_MOD$srt0$0" id="N_EXSP_MOD$srt0$0" tabindex="89" class="PSLEVEL3GRIDCOLUMNHDR" >Module Components</a></th>
+                            <th scope="col" abbr="Contact hours per week" class="PSLEVEL3GRIDCOLUMNHDR" width="74" align="left"><a name="N_EXSP_MOD$srt1$0" id="N_EXSP_MOD$srt1$0" tabindex="90" class="PSLEVEL3GRIDCOLUMNHDR" >Contact hours per week</a></th>
+                            <th scope="col" abbr="Remark" class="PSLEVEL3GRIDCOLUMNHDR" width="71" align="left"><a name="N_EXSP_MOD$srt2$0" id="N_EXSP_MOD$srt2$0" tabindex="91" class="PSLEVEL3GRIDCOLUMNHDR" >Remark</a></th>
+                        </tr>
+
+                        <tr id="trN_EXSP_MOD$0_row1" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_MOD$0_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_MOD$0_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_MOD$0_row1');" valign="center">
+                            <td class="PSLEVEL3GRIDODDROW" style="" height="21" align="left">
+                                <div id="win4divMOD_COMP$0"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="MOD_COMP$0">Lecture</span>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDODDROW" style="white-space: nowrap;" align="left">
+                                <div id="win4divN_EXSP_MOD_N_CON_HRS$0"><%= moduleMapping.contactHours.lecture %>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDODDROW" style="" align="left">
+                                <div id="win4divN_EXSP_MOD_REMARK_BEL$0"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:71px; " id="N_EXSP_MOD_REMARK_BEL$0">&nbsp;</span>
+                                </div></td>
+                        </tr>
+
+                        <tr id="trN_EXSP_MOD$0_row2" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_MOD$0_row2');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_MOD$0_row2');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_MOD$0_row2');" valign="center">
+                            <td class="PSLEVEL3GRIDEVENROW" style="" height="21" align="left">
+                                <div id="win4divMOD_COMP$1"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="MOD_COMP$1">Tutorials</span>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDEVENROW" style="white-space: nowrap;" align="left">
+                                <div id="win4divN_EXSP_MOD_N_CON_HRS$1"><%=moduleMapping.contactHours.tutorials %>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDEVENROW" style="" align="left">
+                                <div id="win4divN_EXSP_MOD_REMARK_BEL$1"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:71px; " id="N_EXSP_MOD_REMARK_BEL$1">&nbsp;</span>
+                                </div></td>
+                        </tr>
+
+                        <tr id="trN_EXSP_MOD$0_row3" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_MOD$0_row3');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_MOD$0_row3');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_MOD$0_row3');" valign="center">
+                            <td class="PSLEVEL3GRIDODDROW" style="" height="21" align="left">
+                                <div id="win4divMOD_COMP$2"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="MOD_COMP$2">Practicals/Lab</span>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDODDROW" style="white-space: nowrap;" align="left">
+                                <div id="win4divN_EXSP_MOD_N_CON_HRS$2"><%= moduleMapping.contactHours.practicals %>
+                            <td class="PSLEVEL3GRIDODDROW" style="" align="left">
+                                <div id="win4divN_EXSP_MOD_REMARK_BEL$2"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:71px; " id="N_EXSP_MOD_REMARK_BEL$2">&nbsp;</span>
+                                </div></td>
+                        </tr>
+                        <tr id="trN_EXSP_MOD$0_row4" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_MOD$0_row4');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_MOD$0_row4');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_MOD$0_row4');" valign="center">
+                            <td class="PSLEVEL3GRIDEVENROW" style="" height="21" align="left">
+                                <div id="win4divMOD_COMP$3"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="MOD_COMP$3">Others</span>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDEVENROW" style="white-space: nowrap;" align="left">
+                                <div id="win4divN_EXSP_MOD_N_CON_HRS$3"><%= moduleMapping.contactHours.others %>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDEVENROW" style="white-space: nowrap;" align="left">
+                                <div id="win4divN_EXSP_MOD_REMARK_BEL$3"><%= moduleMapping.contactHours.remarks %>
+                                </div></td>
+                        </tr>
+                        </tbody></table>
+                        </div>
+            </div>
+
+                <div class= "card" >
+                    <h4 class="card-header">Assessment</h4>
+                    <div class="card-body">
+                    <table dir="ltr" cols="3" class="PSLEVEL3GRID" style="border-style:none" width="100%" cellspacing="0" cellpadding="2" border="1">
+                        <tbody><tr>
+                            <th scope="col" abbr="Assignment Method" class="PSLEVEL3GRIDCOLUMNHDR" width="84" align="left"><a name="N_EXSP_ASGNMT$srt0$0" id="N_EXSP_ASGNMT$srt0$0" tabindex="200" class="PSLEVEL3GRIDCOLUMNHDR">Assignment Method</a></th>
+                            <th scope="col" abbr="Weightage(in %)" class="PSLEVEL3GRIDCOLUMNHDR" width="83" align="left"><a name="N_EXSP_ASGNMT$srt1$0" id="N_EXSP_ASGNMT$srt1$0" tabindex="201" class="PSLEVEL3GRIDCOLUMNHDR" >Weightage(in %)</a></th>
+                            <th scope="col" abbr="Remark" class="PSLEVEL3GRIDCOLUMNHDR" width="92" align="left"><a name="N_EXSP_ASGNMT$srt2$0" id="N_EXSP_ASGNMT$srt2$0" tabindex="202" class="PSLEVEL3GRIDCOLUMNHDR" >Remark</a></th>
+                        </tr>
+                        <tr id="trN_EXSP_ASGNMT$0_row1" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_ASGNMT$0_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_ASGNMT$0_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_ASGNMT$0_row1');" valign="center">
+                            <td class="PSLEVEL3GRIDODDROW" style="" height="21" align="left">
+                                <div id="win4divASGN_MET$0"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="ASGN_MET$0">Exam</span>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDODDROW" style="white-space: nowrap;" align="left">
+                                <div id="win4divN_EXSP_ASGNMT_N_WEIGHTAGE$0"><%= moduleMapping.weightage.exam %>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDODDROW" style="" align="left">
+                                <div id="win4divN_EXSP_ASGNMT_REMARK_BEL$0"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:92px; " id="N_EXSP_ASGNMT_REMARK_BEL$0">&nbsp;</span>
+                                </div></td>
+                        </tr>
+                        <tr id="trN_EXSP_ASGNMT$0_row2" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_ASGNMT$0_row2');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_ASGNMT$0_row2');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_ASGNMT$0_row2');" valign="center">
+                            <td class="PSLEVEL3GRIDEVENROW" style="" height="21" align="left">
+                                <div id="win4divASGN_MET$1"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="ASGN_MET$1">Assignments</span>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDEVENROW" style="white-space: nowrap;" align="left">
+                                <div id="win4divN_EXSP_ASGNMT_N_WEIGHTAGE$1"><%= moduleMapping.weightage.assignment %>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDEVENROW" style="" align="left">
+                                <div id="win4divN_EXSP_ASGNMT_REMARK_BEL$1"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:92px; " id="N_EXSP_ASGNMT_REMARK_BEL$1">&nbsp;</span>
+                                </div></td>
+                        </tr>
+                        <tr id="trN_EXSP_ASGNMT$0_row3" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_ASGNMT$0_row3');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_ASGNMT$0_row3');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_ASGNMT$0_row3');" valign="center">
+                            <td class="PSLEVEL3GRIDODDROW" style="" height="21" align="left">
+                                <div id="win4divASGN_MET$2"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="ASGN_MET$2">Quiz</span>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDODDROW" style="white-space: nowrap;" align="left">
+                                <div id="win4divN_EXSP_ASGNMT_N_WEIGHTAGE$2"><%= moduleMapping.weightage.quiz%>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDODDROW" style="" align="left">
+                                <div id="win4divN_EXSP_ASGNMT_REMARK_BEL$2"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:92px; " id="N_EXSP_ASGNMT_REMARK_BEL$2">&nbsp;</span>
+                                </div></td>
+                        </tr>
+                        <tr id="trN_EXSP_ASGNMT$0_row4" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_ASGNMT$0_row4');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_ASGNMT$0_row4');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_ASGNMT$0_row4');" valign="center">
+                            <td class="PSLEVEL3GRIDEVENROW" height="21" align="left">
+                                <div id="win4divASGN_MET$3"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="ASGN_MET$3">Others</span>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDEVENROW" style="white-space:nowrap;" align="left">
+                                <div id="win4divN_EXSP_ASGNMT_N_WEIGHTAGE$3"> <%= moduleMapping.weightage.others %>
+                                </div></td>
+                            <td class="PSLEVEL3GRIDEVENROW" style="white-space:nowrap;" align="left">
+                                <div id="win4divN_EXSP_ASGNMT_REMARK_BEL$3"> <%= moduleMapping.weightage.remarks%>
+                                </div></td>
+                        </tr>
+                        </tbody></table>
+                </div>
+                </div>
+                <div class="card last-card">
+                    <h4 class="card-header">Other Information</h4>
+                    <div class="card-body">
+                            <strong>Weeks of Instruction: </strong> <%= moduleMapping.instructionWeeks %>
+                        <br>
+                            <strong>Url for Module Information: </strong><br> <%= moduleMapping.url %>
+                        <br>
+                            <strong>Other Information:</strong><br> <%= moduleMapping.otherInformation %>
+                        <br>
+                            <strong>Pre-Requisite: </strong><%= moduleMapping.prerequisite %>
+                        <br>
+                            <span class="badge badge-primary">Semester <%= moduleMapping.semester %></span>
+                        </div>
+                    </div>
+
+
+
+            <% if(currentUser && currentUser._id.equals(moduleMapping.author.id)) { %>
+            <a href="/schools/<%= schoolId %>/<%= facultyId %>/module_mappings/<%= moduleMapping._id %>/edit"><button class="btn btn-warning" >Edit</button></a>
+            <form action="/schools/<%= schoolId %>/<%= facultyId %>/module_mappings/<%= moduleMapping._id %>?_method=DELETE" method="POST" class="delete-form">
+            <button class="btn btn-danger">Delete</button>
+            </form>
+            <% }; %>
+            <a class="go-back-button" href="/schools/<%= schoolId %>/module_mappings">Go Back</a>
+        </div>
+</div>
+</div>
+
+<%- include("../partials/footer") %>

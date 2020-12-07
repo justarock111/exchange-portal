@@ -1,0 +1,97 @@
+<%- include("../partials/header") %>
+<!--Objects to pass in: current school-->
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-2">
+
+            <p class="lead"><%= school.name %></p>
+
+
+            <div class="thumbnail">
+
+                <img src="<%= school.logoPath %>">
+
+                <div class="caption">
+                    <h4><%= school.name %></h4>
+                    <h5><%= school.location %></h5>
+                </div>
+
+            </div>
+
+
+            <div class="group">
+
+                <li class="list-group-item"><a  href="/schools/<%=school._id%>">General Information</a></li>
+
+                <li class="list-group-item"><a  href="/schools/<%=school._id%>/module_mappings">Module Mappings</a></li>
+
+                <li class="list-group-item active"><a  href="/schools/<%=  school._id %>/additional_information">Additional Information</a></li>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-10" style="overflow-y: scroll; overflow-x: scroll height:400px;">
+
+
+
+
+            <div class="thumbnail">
+                <div class="caption">
+                    <p><em>Submitted by <%= school.author.username %></em></p>
+                    <p class="pull-right">
+                        <em>Source: <a href="<%=school.additionalInformationUrl%>">NUS Information for Student Exchange</a></em>
+                    </p>
+                    <% if(currentUser && currentUser._id.equals(school.author.id)) {%>
+                    <a class="btn btn-warning" href="/schools/<%= school._id %>/edit">Edit</a>
+                    <form action='/schools/<%= school._id%>?_method=DELETE' method="POST" class="delete-form">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                    <% } %>
+                </div>
+                <div class="well">
+                <div class="caption">
+                    <h1>Useful Links</h1>
+                    <table id="links-table" class="table">
+                        <thead class="head-dark">
+                        <tr>
+                            <th scope="col">Number</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Link</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% school.links.forEach((link, index) => { %>
+                        <tr>
+                            <th scope="row"><%= index + 1 %></th>
+                            <td><%= link.title %> </td>
+                            <td><%= link.description %></td>
+                            <td><%= link.url %></td>
+                        </tr>
+                        <% }); %>
+                        <form id="new-link-form" action="/schools/<%= school._id %>/additional_information" method="POST" >
+
+                        <tr>
+
+                            <th scope="row"><%- school.links.length + 1 %></th>
+                            <td><input type="text" name="title"> </td>
+                            <td><input type="text" name="description"></td>
+                            <td><input type="url" name="url"></td>
+                        </tr>
+
+                        </form>
+
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-lg btn-default btn-long btn-primary" type="submit" form="new-link-form" value="Submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>

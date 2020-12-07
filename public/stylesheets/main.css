@@ -1,0 +1,258 @@
+body {
+}
+
+*:focus {
+    outline: none !important;
+}
+
+.search-bar {
+ border-bottom: 2px solid #3dca10;
+ margin: 20px;
+ width: 60%;
+}
+
+.search-bar input {
+ padding: 10px;
+  background-color: white;
+  color: black;
+  outline: none;
+  border: none;
+  width: 90%;
+
+}
+
+.search-bar input::placeholder {
+  color: #909090;
+  opacity: 1;
+}
+
+.search-bar:hover {
+  border-bottom: 2px solid #00a20f;
+  transition: border-bottom 0.1s ease-in-out;
+}
+
+.search-bar:hover input::placeholder {
+  color: #707070;
+  opacity: 1;
+}
+
+.search-bar{
+    display: flex;
+}
+
+.search-bar button{
+    float: left;
+    width: 10%;
+    padding: 10px;
+    background: white;
+    color: #3dca10;
+    font-size: 27px;
+    border: none;
+}
+
+.search-bar:hover button{
+  color: #00a20f;
+}
+
+.university-card{
+    margin: 10px 0;
+    border: none;
+}
+
+.university-card top-column {
+    display: flex;
+}
+
+.university-card h2 {
+    display: inline-block;
+}
+
+.university-card h2 a span, .university-card button{
+    color: #2cb600;
+}
+
+.semester-button{
+    border: 1px solid #2cb600;
+    font-size: 11px;
+    color:  #2cb600;
+    width: 60px;
+    height: 30px;
+    margin: 7px 0px;
+    display: block;
+}
+
+.btn-primary.occupied {
+    background: rgba(184, 229, 188, 1);
+}
+
+.semester-button:hover{
+    background: none;
+    color:  #2cb600;
+    border:  1px solid #2cb600;
+}
+
+.university-card a:hover, .green-link:hover{
+    color: #00a20f;
+}
+
+.university-card a:hover span{
+    color: #00a20f;
+    background: white;
+}
+
+.ranking-flap{
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+    width: 110px;
+    color: white;
+    background: rgba(105, 206, 109, .8);
+    padding: 3px;
+    text-align: center;
+
+}
+
+ .world-ranking {
+    margin-left: 5px;
+}
+
+.ranking-flap .ranking{
+    font-size: 30px;
+    margin: auto;
+}
+
+.ranking-flap .ranking sup{
+    font-size: 13px;
+        margin: auto;
+
+}
+
+.ranking-flap .ranking-name{
+    font-size: 9px;
+     margin: auto;
+}
+
+.university-card p {
+  width: 100%;
+ overflow: hidden;
+  text-overflow: ellipsis;
+   display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+   -webkit-box-orient: vertical;
+   margin-top: 17px;
+}
+
+.sidebar {
+    font-size: 17px;
+    margin: 20px 0;
+}
+
+.sidebar li {
+  border: none;
+  padding: 7px 20px;
+}
+
+.sidebar li a, .title, .green-link {
+ color: #2cb600;
+}
+
+.sidebar li a i {
+  margin-right: 10px;
+
+}
+
+
+.sidebar li.focus {
+    border-right: 5px solid #00a20f;
+
+}
+
+.sidebar li.focus a {
+ color: #00a20f;
+}
+
+.title {
+    font-size: 50px;
+}
+
+.card-header {
+    background: white;
+    border: none;
+}
+
+.subheader-one {
+    color: #2cb600;
+    font-size: 35px;
+    font-weight: 600;
+    margin-top: 20px;
+
+}
+
+.subheader-two {
+    color: #2cb600;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 20px;
+
+}
+
+.module-mapping-button{
+    border: 2px solid #2cb600;
+    font-size: 15px;
+    color:  #2cb600;
+    width: 200px;
+    height: 30px;
+    margin: 32px 0;
+    float: right;
+    background: white;
+    padding-top: 3px;
+}
+
+.module-mapping-button a {
+    margin: auto;
+}
+
+.module-mapping-button:hover{
+    border: 2px solid #2cb600;
+    color:  #2cb600;
+    background: rgba(184, 229, 188, 1);
+}
+
+.module-mapping-card-link{
+    width: 300px;
+}
+
+.module-mapping-container{
+ display: block;
+}
+
+.module-mapping-card {
+    margin: 5px;
+    height: 10px;
+
+}
+
+.module-mapping-card .card{
+ border: 1.5px solid #2cb600;
+}
+
+.module-mapping-card .card-body {
+    padding: 3px 7px 0 7px;
+    color: #2cb600;
+    font-size: 15px;
+}
+
+.module-mapping-card .card-body div {
+    color: #2cb600;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.host-module {
+    color: white;
+     background: rgba(184, 229, 188, .7);
+}
+
+
+
+

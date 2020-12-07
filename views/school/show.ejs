@@ -1,0 +1,114 @@
+<%- include("../partials/header") %>
+
+<!--Objects to pass in: current school-->
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-2 sidebar">
+
+
+
+                <div class="card">
+
+                    <img class="card-img-top" src="<%= school.logoPath %>" alt="">
+
+                    <div class="card-body">
+                        <h6 class="card-title"><%= school.location %></h6>
+                    </div>
+
+                </div>
+
+
+            <div class="group">
+
+                <li class="list-group-item focus"><a  href="/schools/<%=school._id%>"> <i class="fas fa-info-circle"></i> General Information</a></li>
+
+                <li class="list-group-item"><a  href="/schools/<%=school._id%>/module_mappings"><i class="fas fa-people-arrows"></i> Module Mappings</a></li>
+
+                <li class="list-group-item"><a  href="/schools/<%=  school._id %>/additional_information"> <i class="fas fa-plus-circle"></i> Additional Information</a></li>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-10">
+
+            <div class="card university-card">
+                <div class="card-header header">
+                    <div class="top-column">
+                    <h2 class="title"><%= school.institution %></h2>
+                    <div class="ranking-flap world-ranking">
+
+                        <div class="ranking">
+
+
+                            <span class="institution-info__ranking-number"><%= school.world_rank %></span>
+
+                            <sup>th</sup>
+
+                        </div>
+
+                        <div class="ranking-name">World University Rankings 2021</div>
+
+                    </div>
+
+                    <% if(school.national_rank){ %>
+                    <div class="ranking-flap national-ranking">
+
+                        <div class="ranking">
+
+
+                            <span class="institution-info__ranking-number"><%= school.national_rank %></span>
+
+                            <sup>th</sup>
+
+                        </div>
+
+                        <div class="ranking-name">National University Rankings 2021</div>
+
+                    </div>
+
+                    <% } %>
+                </div>
+                </div>
+
+
+            </div>
+            <div class="card">
+
+                <div class="card-body">
+                    Available in:
+                    <div class=" btn-group btn-group-x" role="group" aria-label="Choices">
+                        <% if (school.sem_1 > 0 || school.any_sem > 0) { %>
+                        <button class="semester-button btn btn-primary occupied" type="button">Sem 1</button>
+                        <% } else { %>
+                        <button class="semester-button btn btn-outline-primary" type="button">Sem 1</button>
+                        <% } %>
+
+                        <% if (school.sem_2 > 0 || school.any_sem > 0) { %>
+                        <button class="semester-button btn btn-primary occupied" type="button">Sem 2</button>
+                        <% } else { %>
+                        <button class="semester-button btn btn-outline-primary" type="button">Sem 2</button>
+                        <% } %>
+                    </div>
+
+                    <div class="subheader-two">Introduction</div>
+                    <div>
+                        <%= school.description %>
+                    </div>
+
+                    <div class="text-right">
+                        <a class="green-link" href="/schools/<%= school._id %>/comments/new">Add New Comment</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>
