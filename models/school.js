@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var facultySchema = require("./faculty").schema;
+var linkSchema = require("./link").schema;
 
 const facultyNames = ["Art & Social Sciences", "Business", "Computing", "Science",  "Engineering", "Design & Environment", "Public Health", "Public Policy", "Integrative Sciences & Engineering", "Dentistry",  "Law", "Medicine", "Music", "Duke-NUS", "Yale-NUS", "University Scholars Programme", "Continuing and Lifelong Education"];
 let facultiesArray = [];
@@ -25,6 +26,7 @@ const SchoolSchema = new Schema({
         type: [facultySchema],
         default: facultiesArray
     },
+    links: [linkSchema],
 
 
 });

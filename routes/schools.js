@@ -87,7 +87,7 @@ router.get("/new", middlewareObj.isLoggedIn, (req, res) => {
 
 //RENDER EDIT SCHOOL FORM
 //Object Redirection: redirect by school id
-router.get("/:school_id/edit", middlewareObj.checkSchoolOwnership, (req, res) => {
+router.get("/:school_id/edit", middlewareObj.isLoggedIn, (req, res) => {
     School.findById(req.params.school_id, (err, foundSchool) => {
         if(err){
             console.log("Error finding target school to edit");
@@ -96,11 +96,11 @@ router.get("/:school_id/edit", middlewareObj.checkSchoolOwnership, (req, res) =>
             //Object that is passed in: school
             res.render("school/edit", {school: foundSchool});
         }
-    })
+    });
 });
 
 //UPDATE SCHOOL
-router.put("/:school_id", middlewareObj.checkSchoolOwnership, (req, res) => {
+router.put("/:school_id", middlewareObj.isLoggedIn, (req, res) => {
     //Object required: School
     School.findByIdAndUpdate(req.params.school_id, req.body.school, (err, updatedSchool) => {
     if(err){
@@ -114,7 +114,7 @@ router.put("/:school_id", middlewareObj.checkSchoolOwnership, (req, res) => {
 
 //DELETE SCHOOL
 //Object Redirection: redirect by school id
-router.delete("/:school_id", middlewareObj.checkSchoolOwnership, (req, res) => {
+router.delete("/:school_id", middlewareObj.isLoggedIn, (req, res) => {
     School.findByIdAndRemove(req.params.school_id, (err) => {
         res.redirect("/schools");
     });
@@ -155,7 +155,7 @@ router.get("/", (req, res) => {
 //SEARCH: SEARCH SCHOOL
 router.post("/", (req, res) => {
     let query_string = new RegExp(req.body.query_string, "i");
-    School.find({"institution": query_string }).exec((err, schools) => {
+    School.f.exec((err, schools) => {
      if(err){
          console.log("ERROR QUERYING IN SEARCH BAR: " + err);
          req.flash("error", "Error querying in search bar");

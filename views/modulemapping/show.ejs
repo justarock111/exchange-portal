@@ -1,181 +1,608 @@
 <%- include("../partials/header") %>
+<%- include("../partials/schoolSidebar") %>
 
 <!--Objects to pass in: current module mapping-->
-<div class="container-fluid">
+            <div class="col-md-10">
+            <%- include("../partials/moduleTab") %>
+            <div class="module-mapping-container">
 
-    <div class="row">
-        <div class="col-md-12">
-        <div class="card text-white bg-primary mb-3 module-name-left-card" >
-            <div class="card-body">
-                <h2 class="card-title"><%= moduleMapping.localModuleCode %></h2>
-                <h4 class="card-text"><%= moduleMapping.localModuleName %></h4>
-            </div>
-        </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="module-details">
+                        <ul class="card-group module-mapping-card  big-module-mapping-card nav nav-tabs">
+                            <li class=" active card local-module">
+                                <a  data-toggle="tab" href="#local-module">
+                                <div class="card-body">
+                                    <div class="module-code large-font"> <%= localModule.moduleCode %> </div>
+                                    <p class="module-name medium-large-font"><%= localModule.title %></p>
+                                </div>
+                                </a>
+                            </li>
 
-          <span><i class="arrow right"></i> </span>
+                            <i class="fas fa-caret-right"></i>
 
-        <div class="card text-white bg-info mb-3 module-name-right-card" >
-            <div class="card-body">
-                <h2 class="card-title"><%= moduleMapping.moduleCode %></h2>
-                <h4 class="card-text"><%= moduleMapping.moduleName %></h4>
-            </div>
-        </div>
-            </div>
-    </div>
+                            <li class="card host-module">
+                                <a  data-toggle="tab" href="#host-module">
+                                <div class="card-body">
+                                    <div class="module-code large-font"><%= moduleMapping.moduleCode %> </div>
+                                    <p class="module-name medium-large-font"><%= moduleMapping.moduleName %></p>
+                                </div>
+                                </a>
+                            </li>
 
-            <div class="row">
-            <div class="col-md-12">
+                        </ul>
 
-               <div class="card">
-                   <h4 class="card-header">Synopsis</h4>
-                   <div class="card-body">
-                       <p class="card-text"><%= moduleMapping.synopsis %></p>
-                   </div>
-               </div>
 
-                <div class="card">
-                    <h4 class="card-header">Module Components</h4>
-                    <div class="card-body">
-                    <table dir="ltr" cols="3" class="PSLEVEL3GRID" style="border-style:none" width="100%" cellspacing="0" cellpadding="2" border="1">
-                        <tbody>
 
-                        <tr>
-                            <th scope="col" abbr="Module Components" class="PSLEVEL3GRIDCOLUMNHDR" width="103" align="left"><a name="N_EXSP_MOD$srt0$0" id="N_EXSP_MOD$srt0$0" tabindex="89" class="PSLEVEL3GRIDCOLUMNHDR" >Module Components</a></th>
-                            <th scope="col" abbr="Contact hours per week" class="PSLEVEL3GRIDCOLUMNHDR" width="74" align="left"><a name="N_EXSP_MOD$srt1$0" id="N_EXSP_MOD$srt1$0" tabindex="90" class="PSLEVEL3GRIDCOLUMNHDR" >Contact hours per week</a></th>
-                            <th scope="col" abbr="Remark" class="PSLEVEL3GRIDCOLUMNHDR" width="71" align="left"><a name="N_EXSP_MOD$srt2$0" id="N_EXSP_MOD$srt2$0" tabindex="91" class="PSLEVEL3GRIDCOLUMNHDR" >Remark</a></th>
-                        </tr>
+                        <div class="tab-content page-container">
+                            <div class="row">
+                                <div class="col-md-9 center-content">
+                            <div class="tab-pane fade" id="host-module">
+                                <header class="module-header">
+                                    <h1 class="header-two ">
+                                        <span class="module-code header-one"><%= moduleMapping.moduleCode %> </span>
+                                        <%= moduleMapping.moduleName %>
+                                    </h1>
 
-                        <tr id="trN_EXSP_MOD$0_row1" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_MOD$0_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_MOD$0_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_MOD$0_row1');" valign="center">
-                            <td class="PSLEVEL3GRIDODDROW" style="" height="21" align="left">
-                                <div id="win4divMOD_COMP$0"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="MOD_COMP$0">Lecture</span>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDODDROW" style="white-space: nowrap;" align="left">
-                                <div id="win4divN_EXSP_MOD_N_CON_HRS$0"><%= moduleMapping.contactHours.lecture %>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDODDROW" style="" align="left">
-                                <div id="win4divN_EXSP_MOD_REMARK_BEL$0"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:71px; " id="N_EXSP_MOD_REMARK_BEL$0">&nbsp;</span>
-                                </div></td>
-                        </tr>
+                                    <p>
+                                        <% if(moduleMapping.department){ %>
+                                        <span><%= moduleMapping.department %></span>
+                                        •
+                                       <% } %>
 
-                        <tr id="trN_EXSP_MOD$0_row2" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_MOD$0_row2');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_MOD$0_row2');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_MOD$0_row2');" valign="center">
-                            <td class="PSLEVEL3GRIDEVENROW" style="" height="21" align="left">
-                                <div id="win4divMOD_COMP$1"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="MOD_COMP$1">Tutorials</span>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDEVENROW" style="white-space: nowrap;" align="left">
-                                <div id="win4divN_EXSP_MOD_N_CON_HRS$1"><%=moduleMapping.contactHours.tutorials %>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDEVENROW" style="" align="left">
-                                <div id="win4divN_EXSP_MOD_REMARK_BEL$1"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:71px; " id="N_EXSP_MOD_REMARK_BEL$1">&nbsp;</span>
-                                </div></td>
-                        </tr>
+                                        <% if(moduleMapping.faculty){ %>
+                                        <span><%= moduleMapping.faculty %></span>
+                                        •
+                                        <% } %>
 
-                        <tr id="trN_EXSP_MOD$0_row3" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_MOD$0_row3');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_MOD$0_row3');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_MOD$0_row3');" valign="center">
-                            <td class="PSLEVEL3GRIDODDROW" style="" height="21" align="left">
-                                <div id="win4divMOD_COMP$2"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="MOD_COMP$2">Practicals/Lab</span>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDODDROW" style="white-space: nowrap;" align="left">
-                                <div id="win4divN_EXSP_MOD_N_CON_HRS$2"><%= moduleMapping.contactHours.practicals %>
-                            <td class="PSLEVEL3GRIDODDROW" style="" align="left">
-                                <div id="win4divN_EXSP_MOD_REMARK_BEL$2"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:71px; " id="N_EXSP_MOD_REMARK_BEL$2">&nbsp;</span>
-                                </div></td>
-                        </tr>
-                        <tr id="trN_EXSP_MOD$0_row4" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_MOD$0_row4');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_MOD$0_row4');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_MOD$0_row4');" valign="center">
-                            <td class="PSLEVEL3GRIDEVENROW" style="" height="21" align="left">
-                                <div id="win4divMOD_COMP$3"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="MOD_COMP$3">Others</span>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDEVENROW" style="white-space: nowrap;" align="left">
-                                <div id="win4divN_EXSP_MOD_N_CON_HRS$3"><%= moduleMapping.contactHours.others %>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDEVENROW" style="white-space: nowrap;" align="left">
-                                <div id="win4divN_EXSP_MOD_REMARK_BEL$3"><%= moduleMapping.contactHours.remarks %>
-                                </div></td>
-                        </tr>
-                        </tbody></table>
+                                        <span><%= moduleMapping.moduleCredit %>
+                                            <% if(moduleMapping.creditSystem){ %>
+                                            <%= moduleMapping.creditSystem %>
+                                            <% } else { %>
+                                            Credits (According the Host University's credit system)
+                                            <% } %>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <% var first = true, semester = moduleMapping.semesterData; %>
+                                        <% if(semester) { %>
+                                        <% semester.forEach(semesterObj => { %>
+                                        <% if(!first) {%>
+                                        •
+                                        <% } %>
+                                        <% first = false; %>
+                                        <span>Semester <%= semesterObj.semester %></span>
+
+                                        <% }); %>
+                                        <% } %>
+                                    </p>
+                                </header>
+                                <section class="row">
+                                    <div class="col-sm-8">
+                                        <p><%= moduleMapping.synopsis %></p>
+                                        <dl>
+                                            <dt>Prerequisite (NUS Equivalent) </dt>
+                                            <dd><%= moduleMapping.prerequisite %></dd>
+                                            <% if(moduleMapping.preclusion) { %>
+                                            <dt>Preclusion (NUS Equivalent)</dt>
+                                            <dd><%= moduleMapping.preclusion %></dd>
+                                            <% } %>
+
+
+                                            <dt>Addtional Information</dt>
+                                            <dd><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="_2acILQJm"><polyline points="20 6 9 17 4 12"></polyline></svg> Has S/U option for Undergraduate students only</dd>
+
+
+                                        </dl>
+                                        <div class="margin-bottom">
+                                            <h4 class="header-five">Workload - <%= localModule.moduleCredit * 2.5 %></h4>
+                                            <div class="workload-div">
+                                                <% var workload = localModule.workload %>
+                                                <div>
+                                                    <h5 class="workload-lecture-text">
+                                                        <abbr title="Lecture">Lec</abbr>
+                                                    </h5>
+                                                    <div class="section-div">
+                                                        <% for(var i = 0; i < workload[0]; i++) {%>
+                                                        <div class="workload-bar workload-lecture-bg"></div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h5 class="workload-tutorial-text">
+                                                        <abbr title="Tutorial">Tut</abbr>
+                                                    </h5>
+                                                    <div class="section-div">
+                                                        <% for(var i = 0; i < workload[1]; i++) { %>
+                                                        <div class="workload-bar workload-tutorial-bg"></div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h5 class="workload-project-text">
+                                                        <abbr title="Project">Project</abbr>
+                                                    </h5>
+                                                    <div class="section-div">
+                                                        <% for(var i = 0; i < workload[3]; i++) { %>
+                                                        <div class="workload-bar workload-project-bg"></div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h5 class="workload-preparation-text">
+                                                        <abbr title="Preparation">Preparation</abbr>
+                                                    </h5>
+                                                    <div class="section-div">
+                                                        <% for(var i = 0; i < workload[4]; i++) {%>
+                                                        <div class="workload-bar workload-preparation-bg"></div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <% if(semester) { %>
+                                        <% semester.forEach(semesterObj => { %>
+                                        <div class="margin-bottom">
+                                            <h3 class="header-four">Semester <%= semesterObj.semester %> Exam</h3>
+                                            <% var examDate = semesterObj.examDate; %>
+                                            <% examDate = moment(examDate).format('DD-MMM-YYYY hh:mm a'); %>
+                                            <p><%= examDate %> • <%= semesterObj.examDuration/60 %> hrs</p>
+                                        </div>
+                                        <% }); %>
+                                        <% } %>
+                                    </div>
+                                </section>
+
+                                <section id="host-prerequisites" class="section-divider">
+                                    <h2 class="module-header-h2">Prerequisite Tree</h2>
+                                    <div class="prereq-tree-div">
+
+                                        <ul class="req-list">
+                                            <li class="list-item-1">
+                                                <div class="hoverable color-1 item-div-1 leftmost-div">
+                                                    <a class="list-item-a"><%= moduleMapping.moduleCode %> </a>
+                                                </div>
+                                                <ul class="req-list">
+                                                    <% function createTree(prereqs, level){ %>
+                                                    <% if(!prereqs) return; %>
+                                                    <% if(prereqs.or){ %>
+                                                    <li class="list-item-1">
+                                                        <div class="guide-div item-div-1">one of</div>
+                                                        <ul class="req-list">
+                                                            <% prereqs.or.forEach(prereq => createTree(prereq, level + 1)); %>
+                                                        </ul>
+                                                    </li>
+                                                    <% } %>
+
+                                                    <% if(prereqs.and){ %>
+                                                    <li class="list-item-1">
+                                                        <div class="guide-div item-div-1">all of</div>
+                                                        <ul class="req-list">
+                                                            <% prereqs.and.forEach(prereq => createTree(prereq , level+ 1)); %>
+                                                        </ul>
+                                                    </li>
+                                                    <% } %>
+
+                                                    <% if(typeof prereqs === 'string' || prereqs instanceof String){ %>
+                                                    <li class="list-item-1">
+                                                        <div class="color-<%= level %> item-div-1">
+                                                            <a class="list-item-a"><%= prereqs %> </a>
+                                                        </div>
+                                                    </li>
+                                                    <%  }} %>
+
+                                                    <% if(moduleMapping.prereqTree){ %>
+                                                    <% createTree(moduleMapping.prereqTree, 2); %>
+                                                    <% } %>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+
+                                    <p class="alert alert-warning">
+                                        The prerequisite tree is displayed for visualization purposes and may not be accurate.
+                                        Viewers are encouraged to double check details.
+                                    </p>
+                                </section>
+
+                                <section id="host-reviews">
+                                    <h2 class="module-header-h2">Review and Discussion
+                                    </h2>
+                                    <div class="page-url" data-test-value='http://localhost:3000/schools/<%=school._id %>/<%= facultyId %>/module_mappings/<%= moduleMapping._id %>'>
+                                    </div>
+                                    <div id="disqus_thread"></div>
+
+                                </section>
+
+                                <!-- Closing div tags for tab-contents -->
+                            </div>
+
+
+
+
+                            <div class="tab-pane fade show active" id="local-module">
+                                <header class="module-header">
+                                <div class="module-code header-one"><%= localModule.moduleCode %> </div>
+                                    <div class="header-two ">
+                                    <%= localModule.title %>
+                                </div>
+
+                                <p>
+                                    <span><%= localModule.department %></span>
+                                    •
+                                    <span><%= localModule.faculty %></span>
+                                    •
+                                    <span><%= localModule.moduleCredit %> MCs</span>
+                                </p>
+                                <p>
+                                    <% var first = true, semester = localModule.semesterData; %>
+                                    <% semester.forEach(semesterObj => { %>
+                                    <% if(!first) {%>
+                                    •
+                                    <% } %>
+                                    <% first = false; %>
+                                    <span>Semester <%= semesterObj.semester %></span>
+
+                                    <% }); %>
+                                </p>
+                                </header>
+                                <section class="row">
+                                    <div class="col-sm-8">
+                                        <p><%= localModule.description %></p>
+                                        <dl>
+                                            <dt>Prerequisite</dt>
+                                            <dd><%= localModule.prerequisite %></dd>
+                                            <dt>Preclusion</dt>
+                                            <dd><%= localModule.preclusion %></dd>
+                                            <% if(localModule.additionalInformation != null && localModule.additionalInformation.su == true) {  %>
+                                            <dt>Addtional Information</dt>
+                                            <dd><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="_2acILQJm"><polyline points="20 6 9 17 4 12"></polyline></svg> Has S/U option for Undergraduate students only</dd>
+                                            <% } %>
+
+                                        </dl>
+                                        <div class="margin-bottom">
+                                            <h4 class="header-five">Workload - <%= localModule.moduleCredit * 2.5 %></h4>
+                                            <div class="workload-div">
+                                                <% var workload = localModule.workload %>
+                                                <div>
+                                                <h5 class="workload-lecture-text">
+                                                    <abbr title="Lecture">Lec</abbr>
+                                                </h5>
+                                                <div class="section-div">
+                                                   <% for(var i = 0; i < workload[0]; i++) {%>
+                                                    <div class="workload-bar workload-lecture-bg"></div>
+                                                    <% } %>
+                                                </div>
+                                                </div>
+                                                <div>
+                                                    <h5 class="workload-tutorial-text">
+                                                        <abbr title="Tutorial">Tut</abbr>
+                                                    </h5>
+                                                    <div class="section-div">
+                                                        <% for(var i = 0; i < workload[1]; i++) { %>
+                                                        <div class="workload-bar workload-tutorial-bg"></div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h5 class="workload-project-text">
+                                                        <abbr title="Project">Project</abbr>
+                                                    </h5>
+                                                    <div class="section-div">
+                                                        <% for(var i = 0; i < workload[3]; i++) { %>
+                                                        <div class="workload-bar workload-project-bg"></div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h5 class="workload-preparation-text">
+                                                        <abbr title="Preparation">Preparation</abbr>
+                                                    </h5>
+                                                    <div class="section-div">
+                                                        <% for(var i = 0; i < workload[4]; i++) {%>
+                                                        <div class="workload-bar workload-preparation-bg"></div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <% semester.forEach(semesterObj => { %>
+                                        <div class="margin-bottom">
+                                            <h3 class="header-four">Semester <%= semesterObj.semester %> Exam</h3>
+                                            <% var examDate = semesterObj.examDate; %>
+                                            <% examDate = moment(examDate).format('DD-MMM-YYYY hh:mm a'); %>
+                                            <p><%= examDate %> • <%= semesterObj.examDuration/60 %> hrs</p>
+                                        </div>
+                                        <% }); %>
+                                    </div>
+                                </section>
+
+                                <section id="prerequisites" class="section-divider">
+                                    <h2 class="module-header-h2">Prerequisite Tree</h2>
+                                    <div class="prereq-tree-div">
+                                        <ul class="postreq-list left-tree">
+                                            <% localModule.fulfillRequirements.forEach(module => { %>
+                                            <li class="list-item-1 list-item-2">
+                                                <div class="hoverable color-0 item-div-1 item-div-2">
+                                                    <a class="list-item-a"><%= module %></a>
+                                                </div>
+                                            </li>
+                                            <% }); %>
+                                        </ul>
+
+                                        <div class="guide-div item-div-1">needs</div>
+
+                                        <ul class="req-list">
+                                            <li class="list-item-1">
+                                                <div class="hoverable color-1 item-div-1">
+                                                    <a class="list-item-a"><%= localModule.moduleCode %> </a>
+                                                </div>
+                                                <ul class="req-list">
+                                                <% function createTree(prereqs, level){ %>
+                                                <% if(!prereqs) return; %>
+                                                <% if(prereqs.or){ %>
+                                                    <li class="list-item-1">
+                                                        <div class="guide-div item-div-1">one of</div>
+                                                        <ul class="req-list">
+                                                            <% prereqs.or.forEach(prereq => createTree(prereq, level + 1)); %>
+                                                        </ul>
+                                                </li>
+                                            <% } %>
+
+                                                <% if(prereqs.and){ %>
+                                            <li class="list-item-1">
+                                                        <div class="guide-div item-div-1">all of</div>
+                                                        <ul class="req-list">
+                                                            <% prereqs.and.forEach(prereq => createTree(prereq , level+ 1)); %>
+                                                        </ul>
+                                            </li>
+                                            <% } %>
+
+                                                <% if(typeof prereqs === 'string' || prereqs instanceof String){ %>
+                                            <li class="list-item-1">
+                                                <div class="color-<%= level %> item-div-1">
+                                                    <a class="list-item-a"><%= prereqs %> </a>
+                                                </div>
+                                            </li>
+                                            <%  }} %>
+
+                                            <% if(localModule.fulfillRequirements) { %>
+                                            <% createTree(localModule.prereqTree, 2); %>
+                                            <% } else { %>
+                                           <% createTree(localModule.prereqTree, 1); } %>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+
+                                    <p class="alert alert-warning">
+                                        The prerequisite tree is displayed for visualization purposes and may not be accurate.
+                                        Viewers are encouraged to double check details.
+                                    </p>
+                                </section>
+
+                                <section id="timetable">
+                                    <h2 class="module-header-h2">Timetable:
+                                        <a href="https://nusmods.com/modules/<%= localModule.moduleCode %>">View on NUSMODS</a>
+                                    </h2>
+
+                                </section>
+
+                                <section id="reviews">
+                                    <h2 class="module-header-h2">Review and Discussion:
+                                    <a href="https://nusmods.com/modules/<%= localModule.moduleCode %>">View on NUSMODS</a>
+                                    </h2>
+
+                                </section>
+
+                           <!-- Closing div tags for tab-contents -->
+                            </div>
+
+                            </div>
                         </div>
-            </div>
-
-                <div class= "card" >
-                    <h4 class="card-header">Assessment</h4>
-                    <div class="card-body">
-                    <table dir="ltr" cols="3" class="PSLEVEL3GRID" style="border-style:none" width="100%" cellspacing="0" cellpadding="2" border="1">
-                        <tbody><tr>
-                            <th scope="col" abbr="Assignment Method" class="PSLEVEL3GRIDCOLUMNHDR" width="84" align="left"><a name="N_EXSP_ASGNMT$srt0$0" id="N_EXSP_ASGNMT$srt0$0" tabindex="200" class="PSLEVEL3GRIDCOLUMNHDR">Assignment Method</a></th>
-                            <th scope="col" abbr="Weightage(in %)" class="PSLEVEL3GRIDCOLUMNHDR" width="83" align="left"><a name="N_EXSP_ASGNMT$srt1$0" id="N_EXSP_ASGNMT$srt1$0" tabindex="201" class="PSLEVEL3GRIDCOLUMNHDR" >Weightage(in %)</a></th>
-                            <th scope="col" abbr="Remark" class="PSLEVEL3GRIDCOLUMNHDR" width="92" align="left"><a name="N_EXSP_ASGNMT$srt2$0" id="N_EXSP_ASGNMT$srt2$0" tabindex="202" class="PSLEVEL3GRIDCOLUMNHDR" >Remark</a></th>
-                        </tr>
-                        <tr id="trN_EXSP_ASGNMT$0_row1" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_ASGNMT$0_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_ASGNMT$0_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_ASGNMT$0_row1');" valign="center">
-                            <td class="PSLEVEL3GRIDODDROW" style="" height="21" align="left">
-                                <div id="win4divASGN_MET$0"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="ASGN_MET$0">Exam</span>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDODDROW" style="white-space: nowrap;" align="left">
-                                <div id="win4divN_EXSP_ASGNMT_N_WEIGHTAGE$0"><%= moduleMapping.weightage.exam %>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDODDROW" style="" align="left">
-                                <div id="win4divN_EXSP_ASGNMT_REMARK_BEL$0"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:92px; " id="N_EXSP_ASGNMT_REMARK_BEL$0">&nbsp;</span>
-                                </div></td>
-                        </tr>
-                        <tr id="trN_EXSP_ASGNMT$0_row2" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_ASGNMT$0_row2');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_ASGNMT$0_row2');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_ASGNMT$0_row2');" valign="center">
-                            <td class="PSLEVEL3GRIDEVENROW" style="" height="21" align="left">
-                                <div id="win4divASGN_MET$1"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="ASGN_MET$1">Assignments</span>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDEVENROW" style="white-space: nowrap;" align="left">
-                                <div id="win4divN_EXSP_ASGNMT_N_WEIGHTAGE$1"><%= moduleMapping.weightage.assignment %>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDEVENROW" style="" align="left">
-                                <div id="win4divN_EXSP_ASGNMT_REMARK_BEL$1"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:92px; " id="N_EXSP_ASGNMT_REMARK_BEL$1">&nbsp;</span>
-                                </div></td>
-                        </tr>
-                        <tr id="trN_EXSP_ASGNMT$0_row3" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_ASGNMT$0_row3');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_ASGNMT$0_row3');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_ASGNMT$0_row3');" valign="center">
-                            <td class="PSLEVEL3GRIDODDROW" style="" height="21" align="left">
-                                <div id="win4divASGN_MET$2"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="ASGN_MET$2">Quiz</span>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDODDROW" style="white-space: nowrap;" align="left">
-                                <div id="win4divN_EXSP_ASGNMT_N_WEIGHTAGE$2"><%= moduleMapping.weightage.quiz%>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDODDROW" style="" align="left">
-                                <div id="win4divN_EXSP_ASGNMT_REMARK_BEL$2"><span aria-disabled="true" class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:92px; " id="N_EXSP_ASGNMT_REMARK_BEL$2">&nbsp;</span>
-                                </div></td>
-                        </tr>
-                        <tr id="trN_EXSP_ASGNMT$0_row4" onclick="HighLightTR('rgb(212,219,217)','','trN_EXSP_ASGNMT$0_row4');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trN_EXSP_ASGNMT$0_row4');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trN_EXSP_ASGNMT$0_row4');" valign="center">
-                            <td class="PSLEVEL3GRIDEVENROW" height="21" align="left">
-                                <div id="win4divASGN_MET$3"><span aria-disabled="true" class="PSDROPDOWNLIST_DISPONLY" id="ASGN_MET$3">Others</span>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDEVENROW" style="white-space:nowrap;" align="left">
-                                <div id="win4divN_EXSP_ASGNMT_N_WEIGHTAGE$3"> <%= moduleMapping.weightage.others %>
-                                </div></td>
-                            <td class="PSLEVEL3GRIDEVENROW" style="white-space:nowrap;" align="left">
-                                <div id="win4divN_EXSP_ASGNMT_REMARK_BEL$3"> <%= moduleMapping.weightage.remarks%>
-                                </div></td>
-                        </tr>
-                        </tbody></table>
-                </div>
-                </div>
-                <div class="card last-card">
-                    <h4 class="card-header">Other Information</h4>
-                    <div class="card-body">
-                            <strong>Weeks of Instruction: </strong> <%= moduleMapping.instructionWeeks %>
-                        <br>
-                            <strong>Url for Module Information: </strong><br> <%= moduleMapping.url %>
-                        <br>
-                            <strong>Other Information:</strong><br> <%= moduleMapping.otherInformation %>
-                        <br>
-                            <strong>Pre-Requisite: </strong><%= moduleMapping.prerequisite %>
-                        <br>
-                            <span class="badge badge-primary">Semester <%= moduleMapping.semester %></span>
                         </div>
                     </div>
 
+                    <div class="tab-pane fade" id="module-worksheet">
+
+                                <div class="card-group module-mapping-card  big-module-mapping-card">
+                                    <div class="card local-module">
+                                        <div class="card-body">
+                                            <div class="module-code large-font"> <%= localModule.moduleCode %> </div>
+                                            <p class="module-name medium-large-font"><%= localModule.title %></p>
+                                        </div>
+                                    </div>
+
+                                    <i class="fas fa-caret-right"></i>
+
+                                    <div class="card host-module">
+                                        <div class="card-body">
+                                            <div class="module-code large-font"><%= moduleMapping.moduleCode %> </div>
+                                            <p class="module-name medium-large-font"><%= moduleMapping.moduleName %></p>
+                                        </div>
+                                    </div>
+
+                                </div>
 
 
-            <% if(currentUser && currentUser._id.equals(moduleMapping.author.id)) { %>
-            <a href="/schools/<%= schoolId %>/<%= facultyId %>/module_mappings/<%= moduleMapping._id %>/edit"><button class="btn btn-warning" >Edit</button></a>
-            <form action="/schools/<%= schoolId %>/<%= facultyId %>/module_mappings/<%= moduleMapping._id %>?_method=DELETE" method="POST" class="delete-form">
-            <button class="btn btn-danger">Delete</button>
-            </form>
-            <% }; %>
-            <a class="go-back-button" href="/schools/<%= schoolId %>/module_mappings">Go Back</a>
-        </div>
-</div>
-</div>
+                            <div class="module-mapping-form">
+
+
+
+                                <div class="module-form-div right-border">
+
+                                    <div class="header-three small-top-margin highlight-header">Partner University Module</div>
+
+                                    <table class="show-table left-table">
+                                        <tr>
+                                            <th></th>
+                                            <th>Subject</th>
+                                            <th>Course Nbr</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Module Code:</th>
+                                            <td><p class="medium-input" ><%= moduleMapping.moduleCode %></p></td>
+                                            <td><p class="medium-input" ><%= moduleMapping.moduleCode %></p></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Module Title:</th>
+                                            <td colspan="2"><p ><%= moduleMapping.moduleName %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Units/Credits:</th>
+                                            <td colspan="2"><p ><%= moduleMapping.moduleCredit %></td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3">Module Synopsis:</th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" ><p id="show-synopsis" class="no-overflow"><%= moduleMapping.synopsis %></p></td>
+                                        </tr>
+
+
+                                    </table>
+
+                                </div>
+
+                                <div class=" module-form-div">
+
+                                    <div class="header-three small-top-margin highlight-header">NUS Module</div>
+
+                                    <table class="show-table right-table">
+                                        <tr></tr>
+                                        <tr>
+                                            <th>Module Subject Area: </th>
+                                            <td><p><%= moduleMapping.localModuleCode %></p></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Module Catalog Nbr: </th>
+                                            <td><p><%= moduleMapping.localModuleCode %></p></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Module Title: </th>
+                                            <td><p><%= moduleMapping.localModuleName %></p></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Units/Credits: </th>
+                                            <td><p><%= moduleMapping.localModuleCredit %></p></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="additional-info-div top-border">
+
+                                    <div class="header-three small-top-margin highlight-header" >Partner University - Additional Information</div>
+
+                                    <div class="grid-table show-table" >
+                                        <table>
+                                            <tr>
+                                                <th>Module Components</th>
+                                                <th>Contact hours per week</th>
+                                                <th>Remark</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Lecture</td>
+                                                <td><p><%= moduleMapping.contactHours.lecture %></p></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tutorials</td>
+                                                <td><p><%= moduleMapping.contactHours.tutorials %></p></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Practicals/Labs</td>
+                                                <td><p><%= moduleMapping.contactHours.practicals %></p></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Others</td>
+                                                <td><p><%= moduleMapping.contactHours.others %></p></td>
+                                                <td><p><%= moduleMapping.contactHours.remarks %></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="grid-table show-table" >
+                                        <table>
+                                            <tr>
+                                                <th>Assignment Method</th>
+                                                <th>Weightage(in %)</th>
+                                                <th>Remark</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Exam</td>
+                                                <td><p><%= moduleMapping.weightage.exam %></p></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Assignment</td>
+                                                <td><p><%= moduleMapping.weightage.assignment %></p></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Quiz</td>
+                                                <td><p><%= moduleMapping.weightage.quiz %></p></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Others</td>
+                                                <td><p><%= moduleMapping.weightage.others %></p></td>
+                                                <td><p><%= moduleMapping.weightage.remarks%></p></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <table class="bottom-table show-information-table show-table">
+                                        <tr>
+                                            <th>Weeks of Instruction: </th>
+                                            <td> <p ><%= moduleMapping.instructionWeeks %></p></td>
+                                            <th id="total-weightage-header">Total Weightage(in %): </th>
+                                            <td> <p ><%= 100 %></p></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>URL for Module Details: </th>
+                                            <td colspan="5"> <p class="no-overflow"><%= moduleMapping.url %></p></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Other Information: </th>
+                                            <td colspan="5"> <p class="no-overflow"><%= moduleMapping.otherInformation %></p></td>
+                                        </tr>
+                                        <tr id="last-row">
+                                            <th>Pre-Requisites modules for NUS mapped module (if any): </th>
+                                            <td colspan="5"> <p class="no-overflow"><%= moduleMapping.prerequisite %></p></td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+
+                                <% if(currentUser && currentUser._id.equals(moduleMapping.author.id)) { %>
+                                <a href="/schools/<%= school._id %>/<%= facultyId %>/module_mappings/<%= moduleMapping._id %>/edit"><button class="btn module-mapping-button" >Edit</button></a>
+                                <form action="/schools/<%= school._id %>/<%= facultyId %>/module_mappings/<%= moduleMapping._id %>?_method=DELETE" method="POST" class="delete-form">
+                                    <button class="btn module-mapping-button">Delete Module Mapping</button>
+                                </form>
+                                <% }; %>
+
+
+
+                                <a href="/schools/<%= school._id %>/module_mappings" class="bottom-link">Go Back</a>
+
+
+                    </div>
+                </div>
+            </div>
+            </div>
+<script type="text/javascript" src="/javascripts/commentScript.js"></script>
+<script type="text/javascript" src="/javascripts/calendarScript.js"></script>
 
 <%- include("../partials/footer") %>

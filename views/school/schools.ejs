@@ -1,24 +1,6 @@
 <%- include('../partials/header') %>
 
-<div class="container-fluid">
-    <div class="row">
-
-        <div class="col-md-2 sidebar">
-
-
-
-            <div class="group">
-
-                <li class="list-group-item focus"><a  href=""><i class="fas fa-school"></i> Schools</a></li>
-
-                <li class="list-group-item"><a  href=""><i class="fas fa-book-reader"></i> Faculties</a></li>
-
-                <li class="list-group-item"><a  href=""> <i class="fas fa-book"></i> Modules</a></li>
-
-            </div>
-
-
-        </div>
+      <%- include('../partials/generalSidebar') %>
         <div class="col-md-10">
             <form class="search-bar" action="/schools" method="POST">
                 <input name="query_string" class="input-box form-control form-control-lg" type="search" autocomplete="off" placeholder="Host university, faculty and local module code">
@@ -76,15 +58,15 @@
 
                         <div class="btn-group btn-group-x" role="group" aria-label="Choices">
                             <% if (school.sem_1 > 0 || school.any_sem > 0) { %>
-                            <button class="semester-button btn btn-primary occupied" type="button">Sem 1</button>
+                            <button class=" btn btn-primary occupied semester-button unclickable" type="button">Sem 1</button>
                             <% } else { %>
-                            <button class="semester-button btn btn-outline-primary" type="button">Sem 1</button>
+                            <button class="btn btn-outline-primary semester-button unclickable" type="button">Sem 1</button>
                             <% } %>
 
                             <% if (school.sem_2 > 0 || school.any_sem > 0) { %>
-                            <button class="semester-button btn btn-primary occupied" type="button">Sem 2</button>
+                            <button class="btn btn-primary occupied semester-button unclickable" type="button">Sem 2</button>
                             <% } else { %>
-                            <button class="semester-button btn btn-outline-primary" type="button">Sem 2</button>
+                            <button class="btn btn-outline-primary semester-button unclickable" type="button">Sem 2</button>
                             <% } %>
                         </div>
 

@@ -1,40 +1,13 @@
 <%- include("../partials/header") %>
 
 <!--Objects to pass in: current school-->
-<div class="container-fluid">
-
-    <div class="row">
-
-        <div class="col-md-2 sidebar">
 
 
-
-                <div class="card">
-
-                    <img class="card-img-top" src="<%= school.logoPath %>" alt="">
-
-                    <div class="card-body">
-                        <h6 class="card-title"><%= school.location %></h6>
-                    </div>
-
-                </div>
-
-
-            <div class="group">
-
-                <li class="list-group-item focus"><a  href="/schools/<%=school._id%>"> <i class="fas fa-info-circle"></i> General Information</a></li>
-
-                <li class="list-group-item"><a  href="/schools/<%=school._id%>/module_mappings"><i class="fas fa-people-arrows"></i> Module Mappings</a></li>
-
-                <li class="list-group-item"><a  href="/schools/<%=  school._id %>/additional_information"> <i class="fas fa-plus-circle"></i> Additional Information</a></li>
-            </div>
-
-
-        </div>
+<%- include("../partials/schoolSidebar") %>
 
         <div class="col-md-10">
 
-            <div class="card university-card">
+            <div class="card university-card unclickable">
                 <div class="card-header header">
                     <div class="top-column">
                     <h2 class="title"><%= school.institution %></h2>
@@ -81,34 +54,34 @@
                     Available in:
                     <div class=" btn-group btn-group-x" role="group" aria-label="Choices">
                         <% if (school.sem_1 > 0 || school.any_sem > 0) { %>
-                        <button class="semester-button btn btn-primary occupied" type="button">Sem 1</button>
+                        <button class="semester-button btn btn-primary occupied unclickable" type="button">Sem 1</button>
                         <% } else { %>
-                        <button class="semester-button btn btn-outline-primary" type="button">Sem 1</button>
+                        <button class="semester-button btn btn-outline-primary unclickable" type="button">Sem 1</button>
                         <% } %>
 
                         <% if (school.sem_2 > 0 || school.any_sem > 0) { %>
-                        <button class="semester-button btn btn-primary occupied" type="button">Sem 2</button>
+                        <button class="semester-button btn btn-primary occupied unclickable" type="button">Sem 2</button>
                         <% } else { %>
-                        <button class="semester-button btn btn-outline-primary" type="button">Sem 2</button>
+                        <button class="semester-button btn btn-outline-primary unclickable" type="button">Sem 2</button>
                         <% } %>
                     </div>
 
-                    <div class="subheader-two">Introduction</div>
+                    <div class="header-two">Introduction</div>
                     <div>
                         <%= school.description %>
                     </div>
 
-                    <div class="text-right">
-                        <a class="green-link" href="/schools/<%= school._id %>/comments/new">Add New Comment</a>
-                    </div>
+
 
 
                 </div>
 
 
             </div>
+            <div class="page-url" data-test-value='http://localhost:3000/schools/<%=school._id%>'></div>
+            <div id="disqus_thread"></div>
         </div>
     </div>
 </div>
-
+<script type="text/javascript" src="/javascripts/commentScript.js"></script>
 <%- include("../partials/footer") %>

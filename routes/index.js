@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-
+var bcrypt = require('bcrypt');
 var passport = require("passport");
 
 //IMPORT MODEL
@@ -27,23 +27,21 @@ router.get("/register", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  User.register(new User({username: req.body.username}),
-  req.body.password,
-  (err, user) => {
-  if(err){
-        req.flash("error", err.message);
-        console.log("error registering new user" + err.message);
-        res.redirect("/register");
-  } else {
-        req.flash("success", "Welcome to YelpCamp " + req.body.username);
-        console.log("New user is registered but not authenticated");
-        passport.authenticate("local") (req, res, () => {
-            console.log("New user is authenticated");
-            res.redirect("/schools");
+     const { username, password } = req.body;
+      User.create({ username, password })
+        .then(user => {
+          req.login(user, err => {
+            if (err) next(err);
+            else res.redirect("back");
+          });
+        })
+        .catch(err => {
+          if (err.name === "ValidationError") {
+            console.log("USERNAME IS TAKEN");
+            req.flash("error", "Sorry, that username is already taken. Please choose another username.");
+            res.redirect("/register");
+          } else next(err);
         });
-  }
-  }
-  );
 });
 
 //LOGIN
@@ -51,14 +49,11 @@ router.get("/login", (req, res) => {
     res.render("authentication/login");
 });
 
-router.post("/login",
-    passport.authenticate("local", {
-    successRedirect: "/schools",
-    failureRedirect: "/login",
-    failureFlash: true
-    }),
-    (req, res) => {
-
+router.post("/login",  passport.authenticate("local", {
+                          successRedirect: "/schools",
+                          failureRedirect: "/login",
+                          failureFlash: true,
+                          }), (req, res) => {
 });
 
 //LOGOUT
