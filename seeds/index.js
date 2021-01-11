@@ -62,7 +62,8 @@ Papa.parse(sep_schools_file, {
                         school.description = school_desc.Description;
 
                     })
-                seedDB();
+                await seedDB();
+                console.log('Done seeding database');
             }
             });
 
@@ -102,7 +103,6 @@ const seedDB = async() => {
    return console.log('ERROR WHEN FINDING MATCHING SEP SCHOOL DATABASE: ' + err);
 
    if(result){
-    console.log("I FOUNND A SCHOOL W RANKING OF NAME " + name);
     result.sem_1 = sem_1;
     result.sem_2 = sem_2;
     result.any_sem = any_sem;
