@@ -61,8 +61,7 @@ Papa.parse(sep_schools_file, {
                         school.description = school_desc.Description;
 
                     })
-                seedDB().then(() => {
-                    mongoose.connection.close();
+                seedDB();
                 });
             }
             });
