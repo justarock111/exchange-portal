@@ -79,7 +79,8 @@ submissionBox.addEventListener('change', () => {
 
                startIndex = endIndex;
                endIndex = parsedText.indexOf('Module Catalog Nbr:');
-               currString = parsedText.substring(startIndex + 13, endIndex).trim().replace(/\W/g, '');
+               currString = parsedText.substring(startIndex + 13, endIndex).trim().replace(/\[^0-9A-z\s*,-_+&]/g/g, '');
+               currString.replace(/\s/g, ' ');
                console.log('2. module title is: ' + currString);
                 inputArray[3].value = currString;
 
@@ -97,7 +98,8 @@ submissionBox.addEventListener('change', () => {
 
                startIndex = parsedText.indexOf('Module Synopsis:');
                endIndex = parsedText.indexOf('Course ID:');
-               currString = parsedText.substring(startIndex + 14, endIndex).trim().replace(/\W/g, '');
+               currString = parsedText.substring(startIndex + 14, endIndex).trim().replace(/\[^0-9A-z*,-_+&]/g/g, '');
+               currString.replace(/\s/g, '');
                console.log('6. synopsis is ' + currString);
 
 
@@ -231,7 +233,8 @@ submissionBox.addEventListener('change', () => {
                 if(lineIndex !== -1){
                 currString = parsedLines[lineIndex].trim();
                 startIndex = currString.indexOf('Module Title:');
-                currString = currString.substring(startIndex + 13, currString.length).trim().replace(/[^0-9A-z\s*,-_+&]/g, '');
+                currString = currString.substring(startIndex + 13, currString.length).trim().replace(/[^0-9A-z*,-_+&]/g, '');
+                currString.replace(/\s/g, ' ');
                 console.log('21. local module title is : ' + currString );
                 inputArray[7].value = currString;
                 }
