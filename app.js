@@ -141,5 +141,5 @@ var ip = process.env.IP || '0.0.0.0';
 console.log(ip);
 console.log(port);
 app.listen(port, ip, function(){
-console.log("Server is running");
+console.log(`Server on port ${port}`);
 });

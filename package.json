@@ -1,11 +1,12 @@
 {
-  "name": "Pet_Project",
+  "name": "nusexchange",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node ./seeds/index.js"
+    "seed": "node ./seeds/index.js",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
