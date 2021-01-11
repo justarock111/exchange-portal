@@ -12,7 +12,7 @@ var User = require("../models/user");
 
 //HOME
 router.get("/", (req, res) => {
-res.render("landing");
+res.render("school/schools");
 });
 
 
