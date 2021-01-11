@@ -155,7 +155,7 @@ router.get("/", (req, res) => {
 //SEARCH: SEARCH SCHOOL
 router.post("/", (req, res) => {
     let query_string = new RegExp(req.body.query_string, "i");
-    School.find.exec((err, schools) => {
+    School.find({"institution" : query_string}).exec((err, schools) => {
      if(err){
          console.log("ERROR QUERYING IN SEARCH BAR: " + err);
          req.flash("error", "Error querying in search bar");

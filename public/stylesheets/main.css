@@ -118,7 +118,7 @@ body {
     margin-left: 7px;
 }
 
-.btn-primary.occupied {
+.btn-outline-primary.occupied {
     background: var(--green-lighter);
 }
 
@@ -363,8 +363,7 @@ body {
 .grid-table {
     display: inline-block;
     border: 1px solid #dee2e6;
-    margin-top: 10px;
-    marginL 0 2px;
+    margin: 10px 0 0 3.7px;
 }
 
 .grid-table td, .grid-table th{
@@ -509,7 +508,7 @@ body {
 }
 
 .module-mapping-form{
-    margin: 10px 80px;
+    margin: 10px 0;
 }
 
 

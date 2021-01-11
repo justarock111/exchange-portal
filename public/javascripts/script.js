@@ -39,7 +39,7 @@ submissionBox.addEventListener('change', () => {
     console.log('found file is');
     console.log(image);
 
-    var parsedObject, parsedText, currString, startIndex, endIndex;
+    var parsedObject, parsedText, currString, startIndex, endIndex, nextIndex;
 
 
 
@@ -73,13 +73,13 @@ submissionBox.addEventListener('change', () => {
 
                startIndex = endIndex;
                endIndex = parsedText.indexOf('Module Title:');
-               currString = parsedText.substring(startIndex + 20, endIndex).trim().replace(/[^0-9A-z\s*,-_+&]/g, '');
+               currString = parsedText.substring(startIndex + 20, endIndex).trim().replace(/[^0-9A-z\s,-_+&\s]/g, '');
                console.log('1. module subject area is: ' + currString);
                 inputArray[5].value = currString;
 
                startIndex = endIndex;
                endIndex = parsedText.indexOf('Module Catalog Nbr:');
-               currString = parsedText.substring(startIndex + 13, endIndex).trim().replace(/\[^0-9A-z\s*,-_+&]/g/g, '');
+               currString = parsedText.substring(startIndex + 13, endIndex).trim().replace(/\[^0-9A-z,-_+&\s]/g, '');
                currString.replace(/\s/g, ' ');
                console.log('2. module title is: ' + currString);
                 inputArray[3].value = currString;
@@ -98,8 +98,8 @@ submissionBox.addEventListener('change', () => {
 
                startIndex = parsedText.indexOf('Module Synopsis:');
                endIndex = parsedText.indexOf('Course ID:');
-               currString = parsedText.substring(startIndex + 14, endIndex).trim().replace(/\[^0-9A-z*,-_+&]/g/g, '');
-               currString.replace(/\s/g, '');
+               currString = parsedText.substring(startIndex + 14, endIndex).trim().replace(/\[^0-9A-z*,-_+&\s]/g, '');
+               currString.replace(/\s/g, ' ');
                console.log('6. synopsis is ' + currString);
 
 
@@ -166,15 +166,24 @@ submissionBox.addEventListener('change', () => {
 
                startIndex = endIndex;
                endIndex = parsedText.indexOf('Other Information:');
+               if(endIndex === -1) {
+                    endIndex = parsedText.indexOf('Indicate th');
+                    nextIndex = endIndex;
+                    }
                currString = parsedText.substring(startIndex + 23, endIndex).trim();
                console.log('16, url mod details is ' + currString);
                inputArray[21].value = currString;
 
+               if(endIndex === nextIndex){
+               inputArray[22].value = '';
+               } else {
                startIndex = endIndex;
                endIndex = parsedText.indexOf('Indicate th');
-               currString = parsedText.substring(startIndex + 18, endIndex).trim().replace(/[^0-9A-z\s*,-_+%&|\/\\]/g, '');
+                currString = parsedText.substring(startIndex + 18, endIndex).trim().replace(/[^0-9A-z\s*,-_+%&|\/\\]/g, '');
                console.log('17, other information is ' + currString);
                inputArray[22].value = currString;
+               }
+               nextIndex = 0;
 
                startIndex = parsedText.indexOf('Requisites modules');
                endIndex = parsedText.indexOf('passed for NUS mapped');
@@ -206,7 +215,7 @@ submissionBox.addEventListener('change', () => {
 
                 lineIndex++;
                 endIndex = parsedLines[lineIndex].indexOf('Module Title:');
-                currString += '\n' + parsedLines[lineIndex].substring(-1, endIndex).trim();
+                currString += ' ' + parsedLines[lineIndex].substring(-1, endIndex).trim();
                console.log('20A. Second line is (with line index '+ lineIndex + '):' + currString);
 
                 firstString = parsedLines.find(line => line.includes('Units/Credits:'));
@@ -214,12 +223,12 @@ submissionBox.addEventListener('change', () => {
                 console.log('THE INDEX THAT INCLUDES UNITS/CREDITS IS ' + endLineIndex);
 
                 for(lineIndex++ ; lineIndex < endLineIndex; lineIndex++){
-                    currString += '\n'+ parsedLines[lineIndex];
+                    currString += ' ' + parsedLines[lineIndex];
                   console.log('20A. Middle line is (with line index '+ lineIndex + '):' + currString);
                 }
 
                 endIndex =  parsedLines[endLineIndex].indexOf('Units/Credits:');
-                currString +=  '\n' + parsedLines[lineIndex].substring(-1, endIndex).trim();
+                currString +=  ' ' + parsedLines[lineIndex].substring(-1, endIndex).trim();
                 console.log('20A. Last line is (with line index '+ lineIndex + '):' + currString);
 
                 currString.replace(/[^0-9a-zA-Z\s-,|\/\\.]/g, '');
@@ -233,7 +242,7 @@ submissionBox.addEventListener('change', () => {
                 if(lineIndex !== -1){
                 currString = parsedLines[lineIndex].trim();
                 startIndex = currString.indexOf('Module Title:');
-                currString = currString.substring(startIndex + 13, currString.length).trim().replace(/[^0-9A-z*,-_+&]/g, '');
+                currString = currString.substring(startIndex + 13, currString.length).trim().replace(/[^0-9A-z*,\s-_+&]/g, '');
                 currString.replace(/\s/g, ' ');
                 console.log('21. local module title is : ' + currString );
                 inputArray[7].value = currString;

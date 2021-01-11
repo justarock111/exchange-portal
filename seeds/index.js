@@ -15,7 +15,8 @@ mongoose.connect(url , {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
-})
+}).then(() => console.log('Connected to DB @ ' + url))
+ .catch(error => console.log(error.message));
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -77,7 +78,7 @@ const seedDB = async() => {
    await School.deleteMany({});
 
 
-   await schools_rank.forEach(async (school_rank) => {
+   for(var school_rank of schools_rank) {
    const school =  new School({
     institution: school_rank.name,
     description: school_rank.description,
@@ -87,28 +88,25 @@ const seedDB = async() => {
     })
     await school.save();
 
-   });
+   }
 
-
-
-   sep_schools.forEach((sep_school) => {
+  for(var sep_school of sep_schools) {
 
    let name = sep_school['Partner University'];
    let sem_1 = sep_school.SEM_1.replace(/\D/g, "");
    let sem_2 = sep_school.SEM_2.replace(/\D/g, "");
    let any_sem = sep_school.ANY_SEM.replace(/\D/g, "");
 
-    School.findOne({"institution": name}).exec((err, result) => {
-   if(err){
-   console.log('ERROR WHEN FINDING MATCHING SEP SCHOOL DATABASE: ' + err);
-   }
+   await School.findOne({"institution": name}).exec(async (err, result) => {
+   if(err)
+   return console.log('ERROR WHEN FINDING MATCHING SEP SCHOOL DATABASE: ' + err);
 
    if(result){
-
-    School.findByIdAndUpdate(
-   result._id,
-   { "$set" :    {"sem_1": sem_1, "sem_2": sem_2, "any_sem": any_sem}}
-   );
+    console.log("I FOUNND A SCHOOL W RANKING OF NAME " + name);
+    result.sem_1 = sem_1;
+    result.sem_2 = sem_2;
+    result.any_sem = any_sem;
+    result.save();
    } else {
    const school = new School({
    institution: name,
@@ -117,11 +115,11 @@ const seedDB = async() => {
    any_sem: any_sem,
    });
 
-    school.save();
+   await school.save();
 
    }
    });
 
-   });
+   }
 }
 

@@ -42,22 +42,22 @@
                        </tr>
                         <tr>
                             <th>Module Code:</th>
-                            <td><input class="form-control medium-input module-code-one" type="text" name="moduleMapping[moduleCodeOne]"></td>
-                            <td><input class="form-control medium-input" type="text" name="moduleMapping[moduleCodeTwo]"></td>
+                            <td><input class="form-control medium-input module-code-one" type="text" name="moduleMapping[moduleCodeOne]" required></td>
+                            <td><input class="form-control medium-input" type="text" name="moduleMapping[moduleCodeTwo]" required></td>
                         </tr>
                         <tr>
                             <th>Module Title:</th>
-                            <td colspan="2"><input class="form-control medium-input-2" type="text" name="moduleMapping[moduleName]"></td>
+                            <td colspan="2"><input class="form-control medium-input-2" type="text" name="moduleMapping[moduleName]" required></td>
                         </tr>
                         <tr>
                             <th>Units/Credits:</th>
-                            <td colspan="2"><input class="form-control small-input" type="number" step=".01" name="moduleMapping[moduleCredit]"></td>
+                            <td colspan="2"><input class="form-control small-input" type="number" step=".01" name="moduleMapping[moduleCredit]" required></td>
                         </tr>
                         <tr>
                             <th colspan="3" rowspan="1 ">Module Synopsis:</th>
                         </tr>
                         <tr>
-                            <td colspan="3"><textarea form ="new-mod-mapping-form" name="moduleMapping[synopsis]" rows="3" cols="33" ></textarea></td>
+                            <td colspan="3"><textarea form ="new-mod-mapping-form" name="moduleMapping[synopsis]" rows="3" cols="33" required ></textarea></td>
                         </tr>
 
 
@@ -73,19 +73,19 @@
                        <tr></tr>
                        <tr>
                            <th>Module Subject Area: </th>
-                           <td><input class="form-control" type="text" name="moduleMapping[localModuleCodeOne]"></td>
+                           <td><input class="form-control" type="text" name="moduleMapping[localModuleCodeOne]" required></td>
                        </tr>
                        <tr>
                            <th>Module Catalog Nbr: </th>
-                           <td><input class="form-control" type="text" name="moduleMapping[localModuleCodeTwo]"></td>
+                           <td><input class="form-control" type="text" name="moduleMapping[localModuleCodeTwo]" required></td>
                        </tr>
                        <tr>
                            <th>Module Title: </th>
-                           <td><input class="form-control" type="text" name="moduleMapping[localModuleName]"></td>
+                           <td><input class="form-control" type="text" name="moduleMapping[localModuleName]" required></td>
                        </tr>
                        <tr>
                            <th>Units/Credits: </th>
-                           <td><input class="form-control" type="number" step="0.01" name="moduleMapping[localModuleCredit]"></td>
+                           <td><input class="form-control" type="number" step="0.01" name="moduleMapping[localModuleCredit]" required></td>
                        </tr>
                    </table>
                 </div>
@@ -104,23 +104,23 @@
                       </tr>
                       <tr>
                           <td>Lecture</td>
-                          <td><input type="number" step="0.01" value="0.00" name="contactHours[lecture]"></td>
+                          <td><input type="number" step="0.01" value="0.00" name="contactHours[lecture]" required></td>
                           <td></td>
                       </tr>
                       <tr>
                           <td>Tutorials</td>
-                          <td><input type="number" step="0.01" value="0.00" name="contactHours[tutorials]"></td>
+                          <td><input type="number" step="0.01" value="0.00" name="contactHours[tutorials]" required></td>
                           <td></td>
                       </tr>
                       <tr>
                           <td>Practicals/Labs</td>
-                          <td><input type="number" step="0.01" value="0.00" name="contactHours[practicals]"></td>
+                          <td><input type="number" step="0.01" value="0.00" name="contactHours[practicals]" required></td>
                           <td></td>
                       </tr>
                       <tr>
                           <td>Others</td>
-                          <td><input type="number" step="0.01" value="0.00" name="contactHours[others]"></td>
-                          <td><input type="text"></td>
+                          <td><input type="number" step="0.01" value="0.00" name="contactHours[others]" required></td>
+                          <td><input type="text" name="contactHours[remarks]"></td>
                       </tr>
                   </table>
                 </div>
@@ -134,22 +134,22 @@
                         </tr>
                         <tr>
                             <td>Exam</td>
-                            <td><input type="number" step="0.01" value="0.00" name="weightage[exam]"></td>
+                            <td><input type="number" step="0.01" value="0.00" name="weightage[exam]" required></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>Assignment</td>
-                            <td><input type="number" step="0.01" value="0.00" name="weightage[assignment]"></td>
+                            <td><input type="number" step="0.01" value="0.00" name="weightage[assignment]" required></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>Quiz</td>
-                            <td><input type="number" step="0.01" value="0.00" name="weightage[quiz]"></td>
+                            <td><input type="number" step="0.01" value="0.00" name="weightage[quiz]" required></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>Others</td>
-                            <td><input type="number" step="0.01" value="0.00" name="weightage[others]"></td>
+                            <td><input type="number" step="0.01" value="0.00" name="weightage[others]" required></td>
                             <td><input type="text" name="weightage[remarks]"></td>
                         </tr>
                     </table>
@@ -158,22 +158,22 @@
                 <table class="bottom-table">
                     <tr>
                         <th>Weeks of Instruction: </th>
-                        <td> <input class="form-control small-input" type="number" name="moduleMapping[instructionWeeks]"></td>
+                        <td> <input class="form-control small-input" type="number" name="moduleMapping[instructionWeeks]" required></td>
                         <th>Total Weightage(in %): </th>
-                        <td> <input class="form-control small-input" type="number" name="totalWeightage"></td>
+                        <td> <input class="form-control small-input" type="number" name="totalWeightage" required></td>
                         <td></td>
                     </tr>
                     <tr>
                         <th>URL for Module Details: </th>
-                        <td colspan="5"> <input class="form-control" type="text" name="moduleMapping[url]"></td>
+                        <td colspan="5"> <input class="form-control" type="text" name="moduleMapping[url]" required></td>
                     </tr>
                     <tr>
                         <th>Other Information: </th>
-                        <td colspan="5"> <input class="form-control" type="text" name="moduleMapping[otherInformation]"></td>
+                        <td colspan="5"> <input class="form-control" type="text" name="moduleMapping[otherInformation]" required></td>
                     </tr>
                     <tr>
                         <th>Indicate the Pre-Requisites modules for NUS mapped module (if any): </th>
-                        <td colspan="5"> <input class="form-control" type="text" name="moduleMapping[prerequisite]"></td>
+                        <td colspan="5"> <input class="form-control" type="text" name="moduleMapping[prerequisite]" required></td>
                     </tr>
                 </table>
 
