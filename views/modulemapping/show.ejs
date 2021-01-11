@@ -23,7 +23,7 @@
                             <li class="card host-module">
                                 <a  data-toggle="tab" href="#host-module">
                                 <div class="card-body">
-                                    <div class="module-code large-font"><%= moduleMapping.moduleCode %> </div>
+                                    <div class="module-code large-font"><%= moduleMapping.moduleSubject %><%= moduleMapping.moduleNbr %></div>
                                     <p class="module-name medium-large-font"><%= moduleMapping.moduleName %></p>
                                 </div>
                                 </a>
@@ -39,7 +39,7 @@
                             <div class="tab-pane fade" id="host-module">
                                 <header class="module-header">
                                     <h1 class="header-two ">
-                                        <span class="module-code header-one"><%= moduleMapping.moduleCode %> </span>
+                                        <span class="module-code header-one"><%= moduleMapping.moduleSubject %><%= moduleMapping.moduleNbr %></span>
                                         <%= moduleMapping.moduleName %>
                                     </h1>
 
@@ -481,11 +481,11 @@
                                         <tr></tr>
                                         <tr>
                                             <th>Module Subject Area: </th>
-                                            <td><p><%= moduleMapping.localModuleCode %></p></td>
+                                            <td><p><%= moduleMapping.localModuleSubject %></p></td>
                                         </tr>
                                         <tr>
                                             <th>Module Catalog Nbr: </th>
-                                            <td><p><%= moduleMapping.localModuleCode %></p></td>
+                                            <td><p><%= moduleMapping.localModuleNbr %></p></td>
                                         </tr>
                                         <tr>
                                             <th>Module Title: </th>
@@ -587,7 +587,6 @@
 
 
                                 <% if(currentUser && currentUser._id.equals(moduleMapping.author.id)) { %>
-                                <a href="/schools/<%= school._id %>/<%= facultyId %>/module_mappings/<%= moduleMapping._id %>/edit"><button class="btn module-mapping-button" >Edit</button></a>
                                 <form action="/schools/<%= school._id %>/<%= facultyId %>/module_mappings/<%= moduleMapping._id %>?_method=DELETE" method="POST" class="delete-form">
                                     <button class="btn module-mapping-button">Delete Module Mapping</button>
                                 </form>

@@ -3,10 +3,12 @@ var weightageSchema = require("./weightage").schema;
 var contactHoursSchema = require("./contacthours").schema;
 
 var moduleMappingSchema = new mongoose.Schema({
-    moduleCode: String,
+    moduleSubject: String,
+    moduleNbr: String,
     moduleName: String,
     moduleCredit: Number,
-    localModuleCode: String,
+    localModuleSubject: String,
+    localModuleNbr: String,
     localModuleName: String,
     synopsis: String,
     weightage: weightageSchema,

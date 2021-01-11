@@ -75,8 +75,10 @@ router.post("/:faculty_id/module_mappings", [middlewareObj.isLoggedIn, upload.si
         console.log("weightage object");
         console.log(weightage);
         var moduleMapping = new ModuleMapping(req.body.moduleMapping);
-        moduleMapping.moduleCode = req.body.moduleMapping.moduleCodeOne + req.body.moduleMapping.moduleCodeTwo;
-        moduleMapping.localModuleCode = req.body.moduleMapping.localModuleCodeOne + req.body.moduleMapping.localModuleCodeTwo;
+        moduleMapping.moduleSubject = req.body.moduleMapping.moduleSubject;
+        moduleMapping.moduleNbr = req.body.moduleMapping.moduleNbr;
+       moduleMapping.localModuleSubject = req.body.moduleMapping.localModuleSubject;
+        moduleMapping.localModuleNbr = req.body.moduleMapping.localModuleNbr;
         moduleMapping.contactHours = contactHours;
         moduleMapping.weightage = weightage;
         moduleMapping.author.id = req.user._id;
@@ -108,16 +110,9 @@ router.post("/:faculty_id/module_mappings", [middlewareObj.isLoggedIn, upload.si
              }
           });
     } else {
-        console.log("in here 2");
         let file = req.file;
-        console.log("file is found");
-        console.log(file);
-
-        console.log('gg to run async func');
 
         fs.readFile(`./uploads/${file.filename}`, (err, image) => {
-            console.log('IMG THAT IS READ:')
-            console.log(image);
 
             var parsedText, currString, startIndex, endIndex;
             if(err){
@@ -222,9 +217,6 @@ router.get("/:faculty_id/module_mappings", (req, res) => {
 
 //READ: SHOW ONE MODULE MAPPING OF A SCHOOL
 router.get("/:faculty_id/module_mappings/:module_mapping_id", (req, res) => {
-    console.log("MODULE DETAILS METHOD IS CALLED");
-    console.log("school id is ");
-    console.log(req.params.school_id);
     School.findById(req.params.school_id, (err, foundSchool) => {
     if(err){
     req.flash("error", "Error finding module mappings of this University.");
@@ -233,28 +225,22 @@ router.get("/:faculty_id/module_mappings/:module_mapping_id", (req, res) => {
 
        var foundFaculty = foundSchool.faculties.id(req.params.faculty_id);
        var foundModule = foundFaculty.moduleMappings.id(req.params.module_mapping_id);
-       var localModuleCode = foundModule.localModuleCode;
-       LocalModule.findOne({"moduleCode": localModuleCode}, (err, localModule) => {
+       var localModuleSubject = foundModule.localModuleSubject;
+       var localModuleNbr = foundModule.localModuleNbr;
+       LocalModule.findOne({"moduleSubject": localModuleSubject, "moduleNbr": localModuleNbr }, (err, localModule) => {
        if(err){
             req.flash("error", "Error finding NUS module.");
            return res.redirect("/schools/" + req.params.school_id);
-       }
+        }
 
-
-       if(localModule == null){ //|| !isToday(localModule.headers.date)){
+       if(!localModule){ //|| !isToday(localModule.headers.date)){
            var currYear = new Date().getFullYear();
-           var nextYear = currYear + 1;
-           axios.get(`https:\/\/api.nusmods.com/v2/${currYear}-${nextYear}/modules/${localModuleCode}.json`)
+           var prevYear = currYear - 1;
+           return axios.get(`https:\/\/api.nusmods.com/v2/${prevYear}-${currYear}/modules/${localModuleSubject}${localModuleNbr}.json`)
                 .then(result => {
-                    console.log('RESULT DATA IS ');
-                    console.log(result.data);
                     var newModule  = new LocalModule(result.data);
-                    console.log('LOCAL MODULE OBJECT:');
-                    console.log(newModule);
                     newModule.save()
                     .then(savedModule => {
-                        console.log('NEW MODULE SAVED IS ');
-                        console.log(newModule);
                        return res.render("modulemapping/show", {school: foundSchool, facultyId: req.params.faculty_id, moduleMapping: foundModule, localModule: savedModule, moment: moment});
                     });
                 })
@@ -266,10 +252,6 @@ router.get("/:faculty_id/module_mappings/:module_mapping_id", (req, res) => {
                 });
 
        }
-
-        console.log('MODULE GOTTEN IS ');
-        console.log(localModule);
-
        res.render("modulemapping/show", {school: foundSchool, facultyId: req.params.faculty_id, moduleMapping: foundModule, localModule: localModule, moment: moment});
 
        });
@@ -284,7 +266,6 @@ function isToday(dateString){
 
 //RENDER UPDATE FORM
 router.get("/:faculty_id/module_mappings/:module_id/edit", middlewareObj.checkModuleOwnership, (req, res) => {
-    console.log("rendering edit form...");
     School.findById(req.params.school_id, (err, foundSchool) => {
     if(err)
         console.log("Error finding Host University");
