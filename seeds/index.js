@@ -62,7 +62,6 @@ Papa.parse(sep_schools_file, {
 
                     })
                 seedDB();
-                });
             }
             });
 
