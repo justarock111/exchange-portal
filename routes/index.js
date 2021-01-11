@@ -32,7 +32,10 @@ router.post("/register", (req, res) => {
         .then(user => {
           req.login(user, err => {
             if (err) next(err);
-            else res.redirect("back");
+            else {
+            req.flash("success", "Welcome " + username)
+            res.redirect("/schools");
+            }
           });
         })
         .catch(err => {

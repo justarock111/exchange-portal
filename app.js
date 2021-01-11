@@ -97,7 +97,7 @@ const local = new LocalStrategy({
       if (!user || !user.validPassword(password)) {
         done(null, false, req.flash('error', 'Invalid Username/Password'));
       } else {
-        done(null, user, req.flash('success', 'Welcome ' + user.username));
+        done(null, user, req.flash('success', 'Welcome back ' + user.username));
       }
     })
     .catch(e => done(e));
