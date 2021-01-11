@@ -10,7 +10,18 @@ const schools_rank_path = path.join(__dirname, 'schools_rank.csv');
 const schools_description_path = path.join(__dirname, 'schools_description.csv');
 
 
+var url = process.env.DB_URL || "mongodb://localhost:27017/NUSExchange";
+mongoose.connect(url , {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+})
 
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("Database connected");
+});
 
 const sep_schools_file = fs.createReadStream(sep_schools_path);
 let sep_schools = [];
@@ -50,7 +61,9 @@ Papa.parse(sep_schools_file, {
                         school.description = school_desc.Description;
 
                     })
-                seedDB();
+                seedDB().then(() => {
+                    mongoose.connection.close();
+                });
             }
             });
 
@@ -61,27 +74,10 @@ Papa.parse(sep_schools_file, {
 }});
 
 
-
-mongoose.connect('mongodb://localhost:27017/NUSExchange', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-
-});
-
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-    console.log("Database connected");
-});
-
-
-
-
 const seedDB = async() => {
-   console.log(schools_rank);
 
    await School.deleteMany({});
+
 
    await schools_rank.forEach(async (school_rank) => {
    const school =  new School({
