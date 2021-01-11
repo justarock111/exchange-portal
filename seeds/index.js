@@ -62,8 +62,8 @@ Papa.parse(sep_schools_file, {
                         school.description = school_desc.Description;
 
                     })
-                await seedDB();
-                console.log('Done seeding database');
+                 seedDB();
+
             }
             });
 
@@ -120,6 +120,10 @@ const seedDB = async() => {
    }
    });
 
+
+
    }
+
+      console.log('Done seeding database');
 }
 
