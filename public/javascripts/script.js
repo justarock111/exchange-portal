@@ -73,7 +73,7 @@ submissionBox.addEventListener('change', () => {
 
                startIndex = endIndex;
                endIndex = parsedText.indexOf('Module Title:');
-               currString = parsedText.substring(startIndex + 20, endIndex).trim().replace(/\W/g, '');
+               currString = parsedText.substring(startIndex + 20, endIndex).trim().replace(/[^0-9A-z\s*,-_+&]/g, '');
                console.log('1. module subject area is: ' + currString);
                 inputArray[5].value = currString;
 
@@ -170,7 +170,7 @@ submissionBox.addEventListener('change', () => {
 
                startIndex = endIndex;
                endIndex = parsedText.indexOf('Indicate th');
-               currString = parsedText.substring(startIndex + 11, endIndex).trim().replace(/[^0-9a-z\s-,|\/\\]/g, '');
+               currString = parsedText.substring(startIndex + 18, endIndex).trim().replace(/[^0-9A-z\s*,-_+%&|\/\\]/g, '');
                console.log('17, other information is ' + currString);
                inputArray[22].value = currString;
 
@@ -221,6 +221,7 @@ submissionBox.addEventListener('change', () => {
                 console.log('20A. Last line is (with line index '+ lineIndex + '):' + currString);
 
                 currString.replace(/[^0-9a-zA-Z\s-,|\/\\.]/g, '');
+                currString.replace(/\s/g, ' ');
                 console.log('20. module synopsis is: ' + currString );
                 $('textarea')[0].value = currString;
 
@@ -228,9 +229,9 @@ submissionBox.addEventListener('change', () => {
                 lineIndex =  parsedLines.findIndex(line => line.includes('Module Title:') && line !== firstString);
                 console.log('ARRAY INDEX FOR MODULE TITLE LINE IS: ' + lineIndex);
                 if(lineIndex !== -1){
-                currString = parsedLines[lineIndex].trim().replace(/[^0-9a-zA-Z\s-,]/g, '');;
+                currString = parsedLines[lineIndex].trim();
                 startIndex = currString.indexOf('Module Title:');
-                currString = currString.substring(startIndex + 13, currString.length).trim();
+                currString = currString.substring(startIndex + 13, currString.length).trim().replace(/[^0-9A-z\s*,-_+&]/g, '');
                 console.log('21. local module title is : ' + currString );
                 inputArray[7].value = currString;
                 }

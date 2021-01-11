@@ -9,9 +9,12 @@
        <div class="module-mapping-header subheader-three center">Add New Module Mapping</div>
 
 
-            <div class="module-mapping-header instructions">Take a screenshot of the Module Mapping Worksheet
-                <p class="small-font small-fixed-width">Takes about 5 seconds to process your image. The information is used to autofill the form
-                below. Please double check that the values are correct <br>(as it is not always accurate).</p>
+            <div class="module-mapping-header instructions">Take a screenshot of the Module Mapping Worksheet (<a href="/images/exampleWorksheet.png">example here</a>)
+                <p class="small-font small-fixed-width">Takes about 5 seconds to process your image. <br>
+                    The information is used to auto-fill the form below. <br>
+                    Please double check that the values are correct (as it is not always accurate). <br>
+                    The image to text system might not be able to read the FULL module synopsis.
+                </p>
                 <input type="file" name="worksheet_image"  id="image_input" accept="image/jpeg, image/png" class="btn" >
                 <div class="loading-modal"><!-- Place at bottom of page --></div>
                 <span id="progress-text"></span>
@@ -40,7 +43,7 @@
                         <tr>
                             <th>Module Code:</th>
                             <td><input class="form-control medium-input module-code-one" type="text" name="moduleMapping[moduleCodeOne]"></td>
-                            <td><input class="form-control medium-input" type="number" name="moduleMapping[moduleCodeTwo]"></td>
+                            <td><input class="form-control medium-input" type="text" name="moduleMapping[moduleCodeTwo]"></td>
                         </tr>
                         <tr>
                             <th>Module Title:</th>
