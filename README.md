@@ -1,4 +1,4 @@
-#Student Exchange Website
+# Student Exchange Website
 
 Developed a website using JavaScript and MongoDB to allow users to post student exchange experiences
 Designed webpages with HTML and CSS to allow users to share module mapping by faculty
